@@ -8,7 +8,7 @@ from services.monitor import monitor_file
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 DATA_DIR = os.path.join(BASE_DIR, "data")
-DEFAULT_WATCH_FILE = os.path.join(DATA_DIR, "output.txt")
+DEFAULT_WATCH_FILE = "/tmp/output.txt"
 
 # Initialize Flask, pointing to the frontend dir for templates and static files
 app = Flask(
@@ -62,9 +62,6 @@ def main():
     WATCH_FILE = os.path.abspath(args.file)
     INTERVAL = args.time
     FADE_SPEED = args.speed
-
-    # Ensure the data directory exists
-    os.makedirs(os.path.dirname(WATCH_FILE), exist_ok=True)
 
     app.run(host="0.0.0.0", port=args.port, threaded=True)
 

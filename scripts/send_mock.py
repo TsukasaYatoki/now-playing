@@ -1,10 +1,6 @@
 import argparse
-import os
 import time
 from datetime import datetime
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_FILE = os.path.join(BASE_DIR, "data", "output.txt")
 
 
 def main():
@@ -22,14 +18,11 @@ def main():
         "-f",
         "--file",
         type=str,
-        default=DEFAULT_FILE,
-        help="Target filename (default: data/output.txt)",
+        default="/tmp/output.txt",
+        help="Target filename (default: /tmp/output.txt)",
     )
 
     args = parser.parse_args()
-
-    # Ensure target directory exists
-    os.makedirs(os.path.dirname(os.path.abspath(args.file)), exist_ok=True)
 
     print(
         f"Program started. Writing current time to {args.file} every {args.time} seconds. Press Ctrl+C to stop."
