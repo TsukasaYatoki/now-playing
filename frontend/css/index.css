@@ -1,0 +1,30 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #1e1e1e;
+    color: #4af626;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#logs-container {
+    position: relative;
+    font-size: 1.2em;
+    width: min(90vw, 900px);
+    min-height: 1.5em;
+    text-align: center;
+}
+
+.log-entry {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
