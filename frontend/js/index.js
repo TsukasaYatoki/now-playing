@@ -1,4 +1,19 @@
 const logsContainer = document.getElementById("logs-container");
+const vantaElement = document.getElementById("vanta-bg");
+
+if (window.VANTA && window.VANTA.WAVES && vantaElement) {
+    window.VANTA.WAVES({
+        el: vantaElement,
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        color: 0x0f5b37,
+        shininess: 28,
+        waveHeight: 16,
+        waveSpeed: 0.6,
+        zoom: 0.95
+    });
+}
 
 if (logsContainer) {
     const speed = parseInt(logsContainer.dataset.speed || "500", 10);
