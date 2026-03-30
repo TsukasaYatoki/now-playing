@@ -5,8 +5,9 @@ if (logsContainer) {
     const fadeDuration = Number.isNaN(speed) ? 500 : speed;
 
     const source = new EventSource("/stream");
-    source.onmessage = function(event) {
+    source.onmessage = function (event) {
         const currentLogs = document.querySelectorAll(".log-entry");
+        const hasCurrentLogs = currentLogs.length > 0;
 
         const newLog = document.createElement("div");
         newLog.className = "log-entry";
@@ -17,8 +18,6 @@ if (logsContainer) {
 
         // Ensure the element is painted before we animate opacity.
         requestAnimationFrame(() => {
-            newLog.style.opacity = 1;
-
             currentLogs.forEach((oldLog) => {
                 oldLog.style.opacity = 0;
 
@@ -28,6 +27,11 @@ if (logsContainer) {
                     }
                 }, fadeDuration);
             });
+
+            const fadeInDelay = hasCurrentLogs ? fadeDuration : 0;
+            setTimeout(() => {
+                newLog.style.opacity = 1;
+            }, fadeInDelay);
         });
     };
 }

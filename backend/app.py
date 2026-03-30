@@ -50,7 +50,7 @@ def parse_args():
     parser.add_argument(
         "-s", "--speed", type=int, default=1000, help="Fade animation speed in ms"
     )
-    parser.add_argument("-p", "--port", type=int, default=3900, help="Web server port")
+    parser.add_argument("-p", "--port", type=int, default=3939, help="Web server port")
     return parser.parse_args()
 
 
@@ -63,7 +63,7 @@ def main():
     INTERVAL = args.time
     FADE_SPEED = args.speed
 
-    app.run(host="0.0.0.0", port=args.port, threaded=True)
+    app.run(host="127.0.0.1", port=args.port, threaded=True)
 
 
 if __name__ == "__main__":
