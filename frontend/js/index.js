@@ -1,5 +1,6 @@
 const logsContainer = document.getElementById("logs-container");
 const vantaElement = document.getElementById("vanta-bg");
+const LOG_FADE_DURATION_MS = 1000;
 
 if (window.VANTA && window.VANTA.WAVES && vantaElement) {
     window.VANTA.WAVES({
@@ -16,8 +17,7 @@ if (window.VANTA && window.VANTA.WAVES && vantaElement) {
 }
 
 if (logsContainer) {
-    const speed = parseInt(logsContainer.dataset.speed || "500", 10);
-    const fadeDuration = Number.isNaN(speed) ? 500 : speed;
+    const fadeDuration = LOG_FADE_DURATION_MS;
 
     const source = new EventSource("/stream");
     source.onmessage = function (event) {
